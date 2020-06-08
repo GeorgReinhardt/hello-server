@@ -1,1 +1,63 @@
-<h1>Hello Hello!</h1>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript: Hallo Welt</title>
+    <script>
+     
+     function onLoad() {
+  // Use getEntriesByType() to just get the "navigation" events
+  var perfEntries = performance.getEntriesByType("navigation");
+
+  for (var i=0; i < perfEntries.length; i++) {
+    console.log("= Navigation entry[" + i + "]");
+    var p = perfEntries[i];
+    // dom Properties
+    console.log("DOM content loaded = " + (p.domContentLoadedEventEnd - p.domContentLoadedEventStart));
+    console.log("DOM complete = " + p.domComplete);
+    console.log("DOM interactive = " + p.interactive);
+ 
+    // document load and unload time
+    console.log("document load = " + (p.loadEventEnd - p.loadEventStart));
+    console.log("document unload = " + (p.unloadEventEnd - p.unloadEventStart));
+    
+    // other properties
+    console.log("type = " + p.type);
+    console.log("redirectCount = " + p.redirectCount);
+  }
+}
+
+//    // Use getEntries() to get a list of all performance entries
+//    var p = performance.getEntries();
+//   for (var i=0; i < p.length; i++) {
+//     console.log("PerformanceEntry[" + i + "]");
+//     print_PerformanceEntry(p[i]);
+//   }
+// function print_PerformanceEntry(perfEntry) {
+//   var properties = ["name",
+//                     "entryType",
+//                     "startTime",
+//                     "duration"];
+
+//   for (var i=0; i < properties.length; i++) {
+//     // Check each property
+//     var supported = properties[i] in perfEntry;
+//     if (supported) {
+//       var value = perfEntry[properties[i]];
+//       console.log("... " + properties[i] + " = " + value);
+//     } else {
+//       console.log("... " + properties[i] + " is NOT supported");
+//     }
+//   }
+// }
+
+    </script>
+    <noscript>
+      Sie haben JavaScript deaktiviert.
+    </noscript>
+  </head>
+  <body onload="onLoad()"></body>
+  <body>
+    <p>Diese Seite tut nichts weiter, als eine Hinweisbox auszugeben.</p>
+  </body>
+</html>
